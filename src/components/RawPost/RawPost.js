@@ -13,16 +13,8 @@ function RawPost(props) {
     }).catch(err => {
       //dfgh
     })
-  }, [])
-  const opts = {
-    height: '390',
-    width: '100%',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1,
-    },
-    
-  };
+  }, [props])
+  
   const handleMovie = (id) => {
     console.log('id:', id)
     axios.get(`/movie/${id}/videos?api_key=${API_KEY}&language=en-US`).then(response => {
@@ -49,7 +41,7 @@ function RawPost(props) {
 
       </div>
 
-      {urlId && <ReactPlayer url= {`http://youtube.com/watch?v=${urlId.key}`} width="100%" allow='autoplay; encrypted-media' />}
+      {urlId && <ReactPlayer url= {`http://youtube.com/watch?v=${urlId.key}`} width="100%" playing={true} />}
 
     </div>
   )
